@@ -33,7 +33,7 @@ export const uploadFile = async (req, res) => {
 
             const response = await file.save();
 
-            res.json({ file: `${process.env.APP_BASE_URL}/files/${response.uid}` });
+            res.json({ file: `${process.env.APP_BASE_URL}/download/${response.uid}` });
         });
     } catch (error) {
         console.error(error);
@@ -52,7 +52,7 @@ export const showDownloadFile = async (req, res) => {
         }else{
             return res.status(200).json({
                 name: file.name,
-                size: file.size,
+                size: file.size / 1000000 + ' MB',
                 uid: file.uid,
                 path: file.path,
             });
@@ -72,10 +72,16 @@ export const downloadFile = async (req, res) => {
             return res.status(404).json({ error: 'No file found' });
         }
 
-        const filePath = `${__dirname}/../${file.path}`;
+        const baseDirectory = path.resolve();
+        const filePath = `${baseDirectory}/${file.path}`;
+
+        res.setHeader('Content-Type', 'multipart/form-data');
+        res.setHeader('Content-Disposition', `attachment; filename="${file.originalName}"`);
+
         res.download(filePath);
 
     } catch (error) {
         res.status(500).json(error);
+        console.log(error);
     }
 };

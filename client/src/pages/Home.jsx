@@ -58,14 +58,15 @@ export const Home = () => {
                         isUploaded ?
                             (
                                 <div className="mt-10 mb-4">
-                                    <div className="fileLink border-2 rounded-lg p-10 bg-gray-100 shadow-md" onClick={copyLinkUrl}>
+                                    <label htmlFor="file" className="block text-gray-700 text-sm font-bold mb-2">File Link</label>
+                                    <div id="file" className="fileLink border-2 rounded-lg p-10 bg-gray-100 shadow-md cursor-pointer" title="Click to Copy" onClick={copyLinkUrl}>
                                         {fileLink.file}
                                     </div>
                                 </div>
                             ) :
                             (
-                                <>
-                                    <div className="mt-10 mb-4">
+                                <div className="border-2 rounded-lg p-12 shadow-lg">
+                                    <div className="mt-8 mb-4">
                                         <label htmlFor="file" className="block text-gray-700 text-sm font-bold mb-2">Upload File</label>
                                         <div className="flex items-center">
                                             <label className="w-64 flex justify-center items-center px-4 py-2 bg-white text-gray-600 rounded-lg tracking-wide border border-blue-200 cursor-pointer hover:bg-blue-200 hover:text-white">
@@ -84,7 +85,7 @@ export const Home = () => {
                                             Upload File
                                         </button>
                                     </div>
-                                </>
+                                </div>
                             )
                     }
 
