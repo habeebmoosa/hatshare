@@ -9,7 +9,7 @@ export const Download = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await Axios.get(`http://localhost:3001/api/file/${uid}`);
+                const response = await Axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/file/${uid}`);
                 setFile(response.data);
             } catch (error) {
                 console.error("Error fetching file:", error);
@@ -29,7 +29,7 @@ export const Download = () => {
                     <p>File Size: {file.size}</p>
                 </div>
                 <div className="downloadButton ">
-                    <a href={`http://localhost:3001/api/file/download/${uid}`}>
+                    <a href={`${import.meta.env.VITE_API_BASE_URL}/api/file/download/${uid}`}>
                         <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                             Download
                         </button>

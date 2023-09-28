@@ -19,7 +19,7 @@ export const Home = () => {
             formData.append('myfile', selectedFile);
 
             try {
-                const response = await Axios.post('http://localhost:3001/api/file', formData, {
+                const response = await Axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/file`, formData, {
                     headers: {
                         'Content-Type': 'multipart/form-data',
                     },
