@@ -1,8 +1,7 @@
 import { FileModel } from "../model/file.model.js";
 import multer from 'multer';
 import path from 'path';
-import { v4 as uuidv4 } from 'uuid';
-
+import crypto from 'crypto';
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => cb(null, 'uploads/'),
@@ -28,7 +27,7 @@ export const uploadFile = async (req, res) => {
                 name: req.file.filename,
                 path: req.file.path,
                 size: req.file.size,
-                uid: uuidv4(),
+                uid: crypto.randomUUID(),
             });
 
             const response = await file.save();
