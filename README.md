@@ -12,7 +12,7 @@ HatShare is a platform for sharing files with the help of url links. It is a web
 To get started with the project, clone the repository and install the dependencies.
 ```
 git clone <repo_url>
-cd HatShare
+cd hatshare
 npm install
 ```
 Create a .env file in the api directory and add the following environment variables.
