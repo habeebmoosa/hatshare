@@ -1,15 +1,14 @@
 import { FileModel } from "../model/file.model.js";
 import multer from 'multer';
-import path from 'path';
 import crypto from 'crypto';
+import { storage as firebaseStorage } from "../uploads/firebase.js";
+import {
+    getDownloadURL,
+    ref,
+    uploadBytes
+} from "firebase/storage";
 
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => cb(null, 'uploads/'),
-    filename: (req, file, cb) => {
-        const uniqueName = `${Date.now()}-${Math.round(Math.random() * 1E9)}${path.extname(file.originalname)}`;
-        cb(null, uniqueName);
-    },
-});
+const storage = multer.memoryStorage();
 
 const upload = multer({
     storage,
@@ -23,11 +22,20 @@ export const uploadFile = async (req, res) => {
                 return res.status(400).json({ error: "File upload failed", message: err.message });
             }
             
+            const uploadFile = req.file;
+
+            const uuid = crypto.randomUUID();
+            const fileName = uploadFile.originalname;
+
+            const storeFile = ref(firebaseStorage, `files/${uuid + fileName}`);
+            await uploadBytes(storeFile, uploadFile.buffer);
+
+
             const file = new FileModel({
-                name: req.file.filename,
-                path: req.file.path,
+                name: fileName,
+                path: `files/${uuid + fileName}`,
                 size: req.file.size,
-                uid: crypto.randomUUID(),
+                uid: uuid,
             });
 
             const response = await file.save();
@@ -71,13 +79,9 @@ export const downloadFile = async (req, res) => {
             return res.status(404).json({ error: 'No file found' });
         }
 
-        const baseDirectory = path.resolve();
-        const filePath = `${baseDirectory}/${file.path}`;
-
-        res.setHeader('Content-Type', 'multipart/form-data');
-        res.setHeader('Content-Disposition', `attachment; filename="${file.originalName}"`);
-
-        res.download(filePath);
+        const storageRef = ref(firebaseStorage, file.path);
+        const url = await getDownloadURL(storageRef);
+        res.redirect(url); 
 
     } catch (error) {
         res.status(500).json(error);
