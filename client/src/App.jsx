@@ -7,19 +7,18 @@ import { Navbar } from './components/Navbar';
 import { Download } from './pages/Download';
 import { Footer } from './components/Footer';
 
-function App(){
-
+function App() {
     return (
-       <div className="app">
-        <Navbar />
-        <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/download/:uid" element={<Download/>} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-        </Routes>
-        <Footer />
-       </div>
+        <div className="app">
+            <Navbar />
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/download/:uid" element={<Download />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/contact" element={<Contact />} />
+            </Routes>
+            <Footer />
+        </div>
     );
 }
 
