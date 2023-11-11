@@ -14,6 +14,8 @@ const firebaseConfig = {
 };
 
 console.log('Firebase Config:', firebaseConfig);
+console.log('Firebase Storage Bucket:', process.env.FIREBASE_STORAGE_BUCKET);
+console.log("firebase.js: Initializing Firebase App");
 
 const app = initializeApp(firebaseConfig);
 
