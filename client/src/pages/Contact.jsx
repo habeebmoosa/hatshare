@@ -7,7 +7,7 @@ export const Contact = () => {
   const [msg, setMsg] = useState("");
 
   const sendContact = async () => {
-    await Axios.post("http://localhost:3001/api/contact",
+    await Axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/contact`,
       { name, email, msg }
     ).then((res) => {
       console.log(res);

@@ -27,9 +27,27 @@ export const Navbar = () => {
                 </nav>
             </div>
             <nav className={`${showMenu ? "" : "hidden"} links flex flex-col space-y-5 sm:space-y-0 sm:space-x-5 mx-2 mt-10 text-lg`}>
-                    <Link className="hover:text-blue-600 " to="/">Home</Link>
-                    <Link className="hover:text-blue-600 " to="/about">About</Link>
-                    <Link className="hover:text-blue-600 " to="/contact">Contact</Link>
+                    <Link className="hover:text-blue-600 " to="/" 
+                        onClick={
+                            () => {
+                                setShowMenu(false);
+                            }
+                        }
+                    >Home</Link>
+                    <Link className="hover:text-blue-600 " to="/about"
+                        onClick={
+                            () => {
+                                setShowMenu(false);
+                            }
+                        }
+                    >About</Link>
+                    <Link className="hover:text-blue-600 " to="/contact"
+                        onClick={
+                            () => {
+                                setShowMenu(false);
+                            }
+                        }
+                    >Contact</Link>
             </nav>
         </div>
     )
