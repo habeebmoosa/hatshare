@@ -50,10 +50,9 @@ export const Home = () => {
     }
 
     return (
-        <div className="home container flex flex-col">
-            <div className="inputSection flex flex-col justify-center m-60 space-x-14 sm:flex-row">
-                <div className="mx-auto p-4">
-
+        <div className="flex flex-col">
+            <div className="flex lg:flex-row flex-col justify-center mt-32 lg:space-x-32 lg:space-y-0 space-y-10 items-center mb-64">
+                <div className="p-4 mx-auto lg:mx-0">
                     {
                         isUploaded ?
                             (
@@ -90,10 +89,8 @@ export const Home = () => {
                     }
 
                 </div>
-                <div className="message space-y-5">
-                    <h2 className="
-                        text-3xl 
-                    ">Share files directly from your device to anywhere</h2>
+                <div className="space-y-5">
+                    <h2 className="text-3xl text-center w-96">Share files directly from your device to anywhere</h2>
                     <p className="
                         text-xl 
                         font-thin
@@ -103,88 +100,6 @@ export const Home = () => {
                         HatShare is a free file sharing service that allows you to share files with anyone in the world.
                         You can share files up to 5GB for free and without registration.
                     </p>
-                </div>
-            </div>
-            <div className="featuresSection
-                flex flex-col
-                justify-center
-                items-center
-                space-y-12 
-                m-28 ">
-
-                <h1 className="
-                    text-4xl
-                    text-center">
-                    Features
-                </h1>
-                <div className="features flex flex-row justify-center space-x-10">
-                    <div className="feature 
-                        flex flex-col
-                        justify-center
-                        items-center
-                        space-y-5
-                    ">
-                        <h2 className="
-                            text-2xl
-                            text-center
-                        ">
-                            No registration required
-                        </h2>
-                        <p className="
-                            text-xl
-                            font-thin
-                            text-gray-500
-                            text-center
-                            w-96
-                        ">
-                            You can use HatShare without registration. Just upload your file and share the link with your friends or colleagues.
-                        </p>
-                    </div>
-                    <div className="feature
-                         flex flex-col
-                         justify-center
-                         items-center
-                         space-y-5
-                    ">
-                        <h2 className="
-                            text-2xl
-                            text-center
-                        ">
-                            No file size limits
-                        </h2>
-                        <p className="
-                            text-xl
-                            font-thin
-                            text-gray-500
-                            text-center
-                            w-96
-                        ">
-                            You can upload files up to 5GB for free. If you want to upload larger files, you can upgrade to our premium plans.
-                        </p>
-                    </div>
-                    <div className="feature
-                    
-                    flex flex-col
-                    justify-center
-                    items-center
-                    space-y-5
-                    ">
-                        <h2 className="
-                            text-2xl
-                            text-center
-                        ">
-                            No expiration date
-                        </h2>
-                        <p className="
-                            text-xl
-                            font-thin
-                            text-gray-500
-                            text-center
-                            w-96
-                        ">
-                            Your files will be stored on our servers as long as you need them. You can share your files without worrying about them being deleted.
-                        </p>
-                    </div>
                 </div>
             </div>
         </div>

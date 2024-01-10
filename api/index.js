@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import { fileRouter } from './routes/file.route.js';
+import { contactRouter } from './routes/contact.route.js';
 
 const app = express();
 
@@ -12,6 +13,7 @@ app.use(express.json());
 app.use(cors());
 
 app.use('/api/file', fileRouter);
+app.use('/api/contact', contactRouter);
 
 
 mongoose.connect(process.env.MONGO_URI).then(() => {
